@@ -13,7 +13,7 @@ import static java.nio.file.Paths.get;
  */
 public class lein {
 
-    public static final String DEFAULT_VERSION = "2.3.3";
+    public static final String DEFAULT_VERSION = "2.5.1";
 
     private final Path buildDirectory;
     private final String version;
@@ -32,7 +32,7 @@ public class lein {
     }
 
     public lein(Sys sys, String leinVersion) {
-        this(sys.currentDirectory(),sys,leinVersion);
+        this(sys.currentDirectory(), sys, leinVersion);
     }
 
     public lein(Path buildDirectory, Sys sys, String leinVersion) {
@@ -65,7 +65,7 @@ public class lein {
     Path getUberJar() throws IOException {
         Path installDir = buildDirectory.resolve(get("self-installs"));
         sys.makeDir(installDir);
-        return sys.download(installDir.resolve(get("leiningen-" + version + "-standalone.jar")), "https://leiningen.s3.amazonaws.com/downloads/leiningen-" + version + "-standalone.jar");
+        return sys.download(installDir.resolve(get("leiningen-" + version + "-standalone.jar")), "https://github.com/technomancy/leiningen/releases/download/" + version + "/leiningen-" + version + "-standalone.zip" );
     }
 
     Path getScript() throws IOException {
